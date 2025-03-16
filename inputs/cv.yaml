@@ -5,7 +5,7 @@ cv:
   personal information:
     type: personal information
     entries:
-      picture: inputs/photo.jng
+      picture: inputs/photo.png
       name: Jens Müller
       address: 
         street: 123 Main Street
