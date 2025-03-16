@@ -1,0 +1,142 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper,12pt]{memoir} % Font and paper size
+\usepackage[nswissgerman]{babel}
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[sfdefault]{FiraSans}
+
+\usepackage[top=1cm,left=0.5cm,right=1cm,bottom=1cm]{geometry} % Modify margins
+
+\usepackage{graphicx} % Required for figures
+
+\usepackage{flowfram} % Required for the multi-column layout
+
+\usepackage{url} % URLs
+
+\usepackage[usenames,dvipsnames]{xcolor} % Required for custom colours
+
+\usepackage{tikz} % Required for the horizontal rule
+
+\usepackage{enumitem} % Required for modifying lists
+\usepackage{xcolor} % Customcolors
+
+##HEADER##
+
+\setlist[itemize]{noitemsep,nolistsep,left=1mm,label=\bluebullet} % Remove spacing within and around lists
+
+%Settings for the justification of the text
+\tolerance=1000
+\hyphenpenalty=900
+
+%Setting for page breaks (i.e. no orphans or widows)
+\widowpenalty=10000
+\clubpenalty=10000
+
+\setlength{\columnsep}{\baselineskip} % Set the spacing between columns
+
+% Define the left frame (sidebar)
+\newflowframe{0.26\textwidth}{\textheight}{0pt}{0pt}[left]
+\newlength{\LeftMainSep}
+\setlength{\LeftMainSep}{0.26\textwidth}
+\addtolength{\LeftMainSep}{1\columnsep}
+ 
+% Small static frame for the vertical line
+\newstaticframe{1.5pt}{\textheight}{\LeftMainSep}{0pt}
+ 
+% Content of the static frame with the vertical line
+\begin{staticcontents}{1}
+\hfill
+\tikz{\draw[loosely dotted,color=AccentColor,line width=1.5pt,yshift=0](0,0) -- (0,\textheight);}
+\hfill\mbox{}
+\end{staticcontents}
+ 
+% Define the right frame (main body)
+\addtolength{\LeftMainSep}{1.5pt}
+\addtolength{\LeftMainSep}{1\columnsep}
+\newflowframe{0.7\textwidth}{\textheight}{\LeftMainSep}{0pt}[main01]
+
+\pagestyle{empty} % Disable all page numbering
+
+\setlength{\parindent}{0pt} % Stop paragraph indentation
+
+%----------------------------------------------------------------------------------------
+%	NEW COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\userinformation}[1]{\renewcommand{\userinformation}{#1}} % Define a new command for the CV user's information that goes into the left column
+
+\newcommand{\cvheading}[1]{{\Huge\bfseries\color{MainColor} #1} \par\vspace{.6\baselineskip}} % New command for the CV heading
+\newcommand{\cvsubheading}[1]{{\large \textit{#1}} \bigbreak} % New command for the CV subheading
+
+\newcommand{\Sep}{\vspace{1em}} % New command for the spacing between headings
+\newcommand{\SmallSep}{\vspace{0.5em}} % New command for the spacing within headings
+
+\newcommand{\aboutme}[2]{ % New command for the about me section
+\textbf{\color{MainColor} #1}~~#2\par\Sep
+}
+	
+\newcommand{\CVSection}[1]{ % New command for the headings within sections
+{\Large\textbf{#1}}\par
+\SmallSep % Used for spacing
+}
+
+\newcommand{\CVItem}[2]{ % New command for the item descriptions
+\textbf{\color{MainColor} #1}\par
+#2
+\SmallSep % Used for spacing
+}
+
+\newcommand{\bluebullet}{\textcolor{MainColor}{$\circ$}~~} % New command for the blue bullets
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION 
+%----------------------------------------------------------------------------------------
+
+\userinformation{ % Set the content that goes into the sidebar of each page
+\begin{flushright}
+\small % Smaller font size
+##LEFT##
+\vfill % Whitespace under this block to push it up under the photo
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\userinformation % Print your information in the left column
+
+\framebreak % End of the first column
+
+%----------------------------------------------------------------------------------------
+%	HEADING
+%----------------------------------------------------------------------------------------
+
+\cvheading{Nils Jensen} % Large heading - your name
+
+\cvsubheading{Mathematiker --- Data Scientist} % Subheading - your occupation/specialization
+
+##RIGHT##
+
+%----------------------------------------------------------------------------------------
+%	NEW PAGE DELIMITER
+%	Place this block wherever you would like the content of your CV to go onto the next page
+%----------------------------------------------------------------------------------------
+
+%\clearpage % Start a new page
+
+%\userinformation % Print your information in the left column
+
+%\framebreak % End of the first column
+
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

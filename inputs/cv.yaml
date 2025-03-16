@@ -1,0 +1,119 @@
+cv:
+  styling:
+    main color: "#800000"
+    accent color: "#800000"
+  personal information:
+    type: personal information
+    entries:
+      picture: inputs/photo.jpg
+      name: Jens Müller
+      address: 
+        street: 123 Main Street
+        city: Zürich
+        postal code: 8044
+        country: 
+          en: Switzerland
+          de: Schweiz
+          fr: Suisse
+      phone: 555-555-5555
+      email: test@test.com
+  education:
+    type: section
+    name:
+      en: Education
+      de: Ausbildung
+      fr: Éducation
+    entries:
+    - degree: 
+        en: Bachelor of Science in Information Technology
+        de: Bachelor of Science in Informatik
+        fr: Licence en Informatique
+      school: ETH Zürich
+      start: 2018
+      end: 2021
+    - degree: 
+        en: Master of Science in Mathematics
+        de: Master of Science in Mathematik
+        fr: Master en mathématiques
+      school: ETH Zürich
+      start: 2021
+      end: 2023
+  work experience:
+      type: section
+      name:
+        en: Work Experience
+        de: Berufserfahrung
+        fr: Expérience professionnelle
+      entries:
+      - position: 
+          en: Research Assistant
+          de: Forschungsassistent
+          fr: Assistant de recherche
+        company: ETH Zürich
+        start: 2021
+        end: 
+        description: 
+          en:
+            - Conducted research in the field of mathematics.
+            - Published papers in peer-reviewed journals.
+          de:
+            - Forschung im Bereich Mathematik durchgeführt.
+            - Veröffentlichte Artikel in Fachzeitschriften.
+          fr:
+            - Recherche dans le domaine des mathématiques.
+            - Articles publiés dans des revues à comité
+      - position: 
+          en: Research Assistant
+          de: Forschungsassistent
+          fr: Assistant de recherche
+        company: ETH Zürich
+        start: 2021
+        end: 2023
+        description: 
+          en: Conducted research in the field of mathematics.
+          de: Forschung im Bereich Mathematik durchgeführt.
+          fr: Recherche dans le domaine des mathématiques.
+  languages:
+    type: leftcolumn
+    name:
+      en: Languages
+      de: Sprachen
+      fr: Langues
+    entries:
+      - language:
+          en: French
+          de: Französisch
+          fr: Français
+        proficiency:
+          en: Mother Tongue
+          de: Muttersprache
+          fr: Langue maternelle
+      - language: 
+          en: English
+          de: Englisch
+          fr: Anglais
+        proficiency: 
+          en: Fluent
+          de: Fliessend
+          fr: Courant
+      - language: 
+          en: German
+          de: Deutsch
+          fr: Allemand
+        proficiency: 
+          en: Fluent
+          de: Fliessend
+          fr: Courant
+  programming:
+    type: leftcolumn
+    name:
+      en: Programming languages
+      de: Programmiersprachen
+      fr: Langages de programmation
+    entries:
+      - language: Python
+      - language: Java
+      - language: C++
+      - language: R
+      - language: LaTeX
+
