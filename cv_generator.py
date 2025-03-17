@@ -20,11 +20,9 @@ DICTIONARY = {
     }
 }
 
-
 import yaml
 import os
 import datetime
-
 
 def main():
     with open('inputs/cv.yaml', 'r') as file:
@@ -77,6 +75,8 @@ def parse_cv_data(data, language):
                 header, left, right = parse_languages(data[key], language)    
             case 'programming':
                 header, left, right = parse_programming(data[key], language)
+            case 'volonteering':
+                header, left, right = parse_volonteering(data[key], language)
             case _:
                 raise ValueError(f'Invalid key: {key}')
         tex_header += header
@@ -116,8 +116,14 @@ def parse_personal_info(data, language):
         tex_left += f"\\includegraphics[width=0.6\\columnwidth]{{{entries["picture"]}}}\\\\[\\baselineskip]\n"
     try:
         tex_left += f"{entries['name']}\\\\ \n"
+        tex_header += "\\newcommand{\\cvheading}{{\\Huge\\bfseries\\color{MainColor} " + entries["name"] + "} \\par\\vspace{.6\\baselineskip}}\n"
     except KeyError:
         raise ValueError('The personal information must contain a "name" key')
+    if 'subtitle' in entries:
+        try:
+            tex_header += "\\newcommand{\\cvsubheading}{{\\large \\textit{" + entries['subtitle'][language]  + "}} \\bigbreak}" 
+        except KeyError:
+            raise ValueError(f'The subtitle must contain a "{language}" key')
     if 'email' in entries:
         tex_left += f"\\url{{{entries['email']}}}\\\\ \n"
     if 'phone' in entries:
@@ -194,7 +200,7 @@ def parse_work_experience(data, language):
                 tex_right += f"{entry['description'][language]}\n"
         except KeyError:
             raise ValueError('The work experience entry must contain a "description" key')
-        tex_right += "}\n"
+        tex_right += "}\n\n"
     tex_right += "\\Sep\n"
     return tex_header, tex_left, tex_right
 
@@ -230,6 +236,30 @@ def parse_programming(data, language):
             tex_left += f"{entry['language']} \\\\ \n"
         except KeyError:
             raise ValueError('The programming entry must contain a "name" key')
+    return tex_header, tex_left, tex_right
+
+def parse_volonteering(data, language):
+    tex_header, tex_left, tex_right = '', '', ''
+    if data['type'] != "section":
+        raise ValueError('The type of volonteering must be "section"')
+    try:
+        entries = data['entries']
+    except KeyError:
+        raise ValueError('The volonteering must contain an "entries" key')
+    try:
+        tex_right += f"\\CVSection{{{data['name'][language]}}}\n"
+    except KeyError:
+        raise ValueError(f'The volonteering must contain a "name" key, in the language {language}')
+    for entry in entries:
+        try:
+            start = entry['start']
+            end = entry['end']
+            if end is None:
+                end = DICTIONARY["no end"][language]
+            tex_right += f"\\CVItem{{{start} - {end}, {entry['organization']}}}{{{entry['position'][language]}}}\n \n"
+        except KeyError:
+            raise ValueError('The volonteering entry must contain a "start", "end", "organization", and "position" key')
+    tex_right += "\\Sep\n"
     return tex_header, tex_left, tex_right
 
 if __name__ == '__main__':
