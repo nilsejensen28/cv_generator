@@ -116,4 +116,23 @@ cv:
       - language: C++
       - language: R
       - language: LaTeX
+  volonteering:
+    type: section
+    name:
+      en: Volonteering
+      de: Ehrenamtliche Tätigkeit
+      fr: Bénévolat
+    entries:
+    - position: 
+        en: Volunteer
+        de: Freiwilliger
+        fr: Bénévole
+      organization: Red Cross
+      start: 2021
+      end: 
+      description: 
+        en: Helped with the organization of events.
+        de: Bei der Organisation von Veranstaltungen geholfen.
+        fr: A aidé à l'organisation d'événements.
+  
 
